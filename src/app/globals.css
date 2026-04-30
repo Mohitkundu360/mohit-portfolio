@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #080B10;
+  --surface: #0D1117;
+  --border: #1C2333;
+  --accent: #4DFFB4;
+  --blue: #4D9FFF;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #1C2333 #080B10;
+}
+
+body {
+  background-color: var(--bg);
+  color: #CDD6E8;
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+/* Selection */
+::selection {
+  background: rgba(77, 255, 180, 0.2);
+  color: #4DFFB4;
+}
+
+/* Noise texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0.4;
+}
+
+/* Gradient mesh background */
+.bg-mesh {
+  background: 
+    radial-gradient(ellipse 80% 50% at 20% -10%, rgba(77, 159, 255, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 110%, rgba(77, 255, 180, 0.06) 0%, transparent 60%),
+    #080B10;
+}
+
+/* Glowing accent line */
+.accent-line {
+  background: linear-gradient(90deg, transparent, #4DFFB4, transparent);
+  height: 1px;
+}
+
+/* Animated gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #4DFFB4 0%, #4D9FFF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Section label style */
+.section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #4DFFB4;
+}
+
+/* Card hover glow */
+.card-glow:hover {
+  box-shadow: 0 0 0 1px rgba(77, 255, 180, 0.2), 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+/* Timeline connector */
+.timeline-line {
+  background: linear-gradient(to bottom, #4DFFB4, #4D9FFF, transparent);
+}
